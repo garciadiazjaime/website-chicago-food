@@ -1,34 +1,39 @@
+'use client'
+
+import { useEffect } from "react";
+import TagManager from "react-gtm-module";
+
 const places = [
   {
-    name: 'Deep-Dish Pizza from Lou Malnati’s',
+    name: "Deep-Dish Pizza from Lou Malnati’s",
   },
   {
     name: "Chicago Italian Beef Sandwich at Al’s Italian Beef",
   },
   {
-    name: 'Basic Fried Chicken Dinner at Harold’s Chicken Shack'
+    name: "Basic Fried Chicken Dinner at Harold’s Chicken Shack",
   },
   {
-    name: 'Buttermilk Old-Fashioned Chicago Doughnut at Do-Rite Donut',
+    name: "Buttermilk Old-Fashioned Chicago Doughnut at Do-Rite Donut",
   },
   {
-    name: 'Chicago-style hot dogs at Portillo’s'
+    name: "Chicago-style hot dogs at Portillo’s",
   },
   {
-    name: 'The Famous Kuma Burger at Kuma’s Corner'
+    name: "The Famous Kuma Burger at Kuma’s Corner",
   },
   {
-    name: 'Jibarito at Papa’s Cache Sabroso',
+    name: "Jibarito at Papa’s Cache Sabroso",
   },
   {
-    name: 'Butter Toffee at The Fudge Pot',
+    name: "Butter Toffee at The Fudge Pot",
   },
   {
-    name: 'Malbec Beef Empanada at 5411 Empanadas',
+    name: "Malbec Beef Empanada at 5411 Empanadas",
   },
   {
-    name: 'Green Chicken Tamal at 5 Rabanitos'
-  }
+    name: "Green Chicken Tamal at 5 Rabanitos",
+  },
 ];
 
 export default function Home() {
@@ -38,10 +43,17 @@ export default function Home() {
       margin: "0 auto",
     },
     color: {
-      primary: "#21c0f1",
+      primary: "#1e9dc4",
       secondary: "#ee343f",
     },
   };
+
+  useEffect(() => {
+    TagManager.initialize({
+      gtmId: "GTM-MZTCCKMH",
+    });
+  });
+
   return (
     <main>
       <header
@@ -56,11 +68,13 @@ export default function Home() {
         </h1>
       </header>
       <div>
-      <div style={styles.container}>
-        {places.map((place, index) => <div key={index}>
-          <h2>{place.name}</h2>
-        </div>)}
-      </div>
+        <div style={styles.container}>
+          {places.map((place, index) => (
+            <div key={index}>
+              <h2>{place.name}</h2>
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );
