@@ -1,40 +1,10 @@
-'use client'
+"use client";
 
 import { useEffect } from "react";
+import Image from "next/image"
 import TagManager from "react-gtm-module";
 
-const places = [
-  {
-    name: "Deep-Dish Pizza from Lou Malnati’s",
-  },
-  {
-    name: "Chicago Italian Beef Sandwich at Al’s Italian Beef",
-  },
-  {
-    name: "Basic Fried Chicken Dinner at Harold’s Chicken Shack",
-  },
-  {
-    name: "Buttermilk Old-Fashioned Chicago Doughnut at Do-Rite Donut",
-  },
-  {
-    name: "Chicago-style hot dogs at Portillo’s",
-  },
-  {
-    name: "The Famous Kuma Burger at Kuma’s Corner",
-  },
-  {
-    name: "Jibarito at Papa’s Cache Sabroso",
-  },
-  {
-    name: "Butter Toffee at The Fudge Pot",
-  },
-  {
-    name: "Malbec Beef Empanada at 5411 Empanadas",
-  },
-  {
-    name: "Green Chicken Tamal at 5 Rabanitos",
-  },
-];
+import { places } from "./data";
 
 export default function Home() {
   const styles = {
@@ -72,6 +42,10 @@ export default function Home() {
           {places.map((place, index) => (
             <div key={index}>
               <h2>{place.name}</h2>
+              {place.description?.map((line, index) => (
+                <p key={index}>{line}</p>
+              ))}
+              {place.image && <Image src={place.image} alt={place.name} width={400} height={400} />}
             </div>
           ))}
         </div>
